@@ -10,15 +10,6 @@ function clearMessages() {
 
 var kamie_C5_84 = "kamień";
 
-var playerMove = "papier";
-printMessage(
-  "Zagrałem " +
-    kamie_C5_84 +
-    "! Jeśli Twój ruch to " +
-    playerMove +
-    ", to wygrywasz!"
-);
-
 var randomNumber;
 randomNumber = Math.ceil(Math.random() * 3 + 1);
 printMessage("Wylosowana liczba to: " + randomNumber);
@@ -32,3 +23,18 @@ if (randomNumber == "1") {
   computerMove = "nieznany ruch";
 }
 printMessage("Mój ruch: " + computerMove);
+
+var playerMove, playerInput;
+playerInput = prompt("Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.");
+console.log("Wpisana odpowiedź to: " + playerInput);
+if (playerInput == "1") {
+  playerMove = "kamień";
+} else if (playerInput == "2") {
+  playerMove == "papier";
+} else if (playerInput == "3") {
+  playerMove == "nożyce";
+} else {
+  printMessage("Błędny wybór!");
+  playerMove = "kamień";
+}
+printMessage("Twój ruch: " + playerMove);
