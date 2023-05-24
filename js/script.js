@@ -31,7 +31,7 @@ function getMoveName(argMoveId) {
 
 function displayResult(argPlayerMove, argComputerMove) {
   console.log(
-    "wywołano funkcję displayResult z argumentami: " +
+    "Wywołano funkcję displayResult z argumentami: " +
       argPlayerMove +
       ", " +
       argComputerMove
