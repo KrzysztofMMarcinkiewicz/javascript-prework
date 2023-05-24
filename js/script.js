@@ -1,25 +1,18 @@
-var argMoveId,
-  argPlayerMove,
-  argComputerMove,
-  computerMove,
-  playerMove,
-  randomNumber,
-  playerInput,
-  x;
-
-var buttonTest = document.getElementById("button-test");
-var buttonRock = document.getElementById("button-rock");
-var buttonPaper = document.getElementById("button-paper");
-var buttonScissors = document.getElementById("button-scissors");
+const buttonRock = document.getElementById("button-rock");
+const buttonPaper = document.getElementById("button-paper");
+const buttonScissors = document.getElementById("button-scissors");
 
 function buttonClicked(argButtonName) {
   clearMessages();
   console.log(argButtonName + " został kliknięty");
+
+  playerMove = argButtonName;
+  randomNumber = Math.floor(Math.random() * 3 + 1);
+  computerMove = getMoveName(randomNumber);
+  console.log("ruch komputera to: " + computerMove);
+  displayResult(playerMove, computerMove);
 }
 
-/**
- * Describe this function...
- */
 function getMoveName(argMoveId) {
   console.log("wywołano funkcję getMoveName z argumentem: " + argMoveId);
   if (argMoveId == 1) {
@@ -38,16 +31,16 @@ function getMoveName(argMoveId) {
 
 function displayResult(argPlayerMove, argComputerMove) {
   console.log(
-    "wywołano funkcję displayResults z argumentami: " +
+    "wywołano funkcję displayResult z argumentami: " +
       argPlayerMove +
       ", " +
       argComputerMove
   );
-  if (argPlayerMove == "papier" && argComputerMove == "kamień") {
-    printMessage("Wygrywasz!");
-  } else if (argPlayerMove == "kamień" && argComputerMove == "nożyce") {
-    printMessage("Wygrywasz!");
-  } else if (argPlayerMove == "nożyce" && argComputerMove == "papier") {
+  if (
+    (argPlayerMove == "papier" && argComputerMove == "kamień") ||
+    (argPlayerMove == "kamień" && argComputerMove == "nożyce") ||
+    (argPlayerMove == "nożyce" && argComputerMove == "papier")
+  ) {
     printMessage("Wygrywasz!");
   } else if (argPlayerMove == argComputerMove) {
     printMessage("Remis!");
@@ -56,19 +49,6 @@ function displayResult(argPlayerMove, argComputerMove) {
   }
   printMessage("Zagrałem " + argComputerMove + ", a Ty " + argPlayerMove);
 }
-return "kamień";
-
-console.log("wybór ruchu gracza to: " + playerInput);
-playerMove = argButtonName;
-randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log("wylosowana liczba to: " + randomNumber);
-computerMove = getMoveName(randomNumber);
-console.log("ruch komputera to: " + computerMove);
-displayResult(playerMove, computerMove);
-
-buttonTest.addEventListener("click", function () {
-  buttonClicked("Guzik TEST");
-});
 
 buttonRock.addEventListener("click", function () {
   buttonClicked("kamień");
